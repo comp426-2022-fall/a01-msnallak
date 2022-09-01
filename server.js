@@ -1,9 +1,9 @@
 // Require http module
-var http = require('http');
+const http = require('http');
 // Require fs module
-var fs = require('fs');
+const fs = require('fs');
 // Require minimist module (make sure you install this one via npm).
-var minimist = require('minimist');
+const minimist = require('minimist');
 // Use minimist to process one argument `--port=` on the command line after `node server.js`.
 process.argv.forEach((val, index) => {
   console.log(`${index}: ${val}`);
@@ -30,19 +30,14 @@ fs.readFile(fileName, 'utf8', (err, data) => {
   }
 // If there is an error, put it on the console error and return. 
 // Do not be nice about exiting.
-const server = http.createServer((req, res)=>{
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.sendFile(fileName, options, function (err) {
-        if (err) {
-            next(err);
-        } else {
-            console.log('Sent:', fileName);
-        }
-    });
-  res.end();
+	const server = http.createServer((req, res)=>{
+		res.setHeader('Content-Type', 'text/html')
+		res.statusCode = 200
+		res.end(data)
+	})
+	server.listen(3000);
+	console.log("Server listening on port ${port}");
 });
-server.listen(3000);
-console.log("Server listening on port ${port}");
 // Define a const `server` as an arrow function using http.createServer. 
 // Use the documentation for the node.js http module. 
 // The function should have three responses: 
