@@ -29,7 +29,7 @@ fs.readFile(fileName, 'utf8', (err, data) => {
 		res.end(data);
 	})
 	server.listen(port, () => {
-		console.log("Server listening on port ${port}");
+		console.log('Server listening on port ${port}');
 	})
 });
 // Define a const `server` as an arrow function using http.createServer. 
