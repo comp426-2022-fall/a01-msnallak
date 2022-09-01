@@ -30,7 +30,7 @@ fs.readFile(fileName, 'utf8', (err, data) => {
 	})
 	server.listen(port, () => {
 		console.log("Server listening on port ${port}");
-	)}
+	})
 });
 // Define a const `server` as an arrow function using http.createServer. 
 // Use the documentation for the node.js http module. 
